@@ -39,6 +39,7 @@ function createMainWindow() {
 
   window.setSize(1920, 1080);
   window.setPosition(0, 0);
+  window.removeMenu();
 
   window.on('closed', () => {
     mainWindow = null;
