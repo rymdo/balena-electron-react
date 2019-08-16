@@ -9,7 +9,16 @@ let mainWindow;
 
 function createMainWindow() {
   const window = new BrowserWindow({
-    webPreferences: { nodeIntegration: true, kiosk: true, frame: false },
+    webPreferences: {
+      nodeIntegration: true,
+      kiosk: true,
+      frame: false,
+      center: true,
+      height: 1920,
+      width: 1080,
+      minWidth: 1920,
+      minHeight: 1080,
+    },
   });
 
   if (isDevelopment) {
@@ -29,8 +38,6 @@ function createMainWindow() {
   }
 
   window.setFullScreen(true);
-  window.setSize(1920, 1080);
-  window.center();
   /*
   window.on('resize', () => {
     window.getSize();
