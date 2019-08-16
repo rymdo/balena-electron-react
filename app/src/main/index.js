@@ -9,7 +9,7 @@ let mainWindow;
 
 function createMainWindow() {
   const window = new BrowserWindow({
-    webPreferences: { nodeIntegration: true },
+    webPreferences: { nodeIntegration: true, kiosk: true, frame: false },
   });
 
   if (isDevelopment) {
@@ -27,6 +27,8 @@ function createMainWindow() {
       })
     );
   }
+
+  window.setFullScreen(true);
 
   window.on('closed', () => {
     mainWindow = null;
