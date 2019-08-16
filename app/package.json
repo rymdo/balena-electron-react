@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
-    "dev": "NODE_ENV=development electron .",
-    "start": "NODE_ENV=production startx ./node_modules/electron/dist/electron .",
-    "local": "NODE_ENV=production electron .",
-    "format": "prettier \"**/*.{js,jsx,css}\"",
-    "format:fix": "prettier --write \"**/*.{js,jsx,css}\"",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "dev": "electron-webpack dev",
+    "compile": "electron-webpack && cp dist/main/* dist/ && cp dist/renderer/* dist/",
+    "start": "yarn compile && electron dist/main.js",
+    "dist": "yarn compile && electron-builder",
+    "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null",
+    "format": "prettier \"src/**/*.{js,jsx,css}\"",
+    "format:fix": "prettier --write \"src/**/*.{js,jsx,css}\"",
+    "lint": "eslint \"src/**/*.{js,jsx,css}\"",
+    "lint:fix": "eslint \"src/**/*.{js,jsx,css}\" --fix"
   },
   "repository": {
     "type": "git",
@@ -22,9 +24,8 @@
     "js"
   ],
   "dependencies": {
-    "electron": "^6.0.2",
-    "electron-rebuild": "^1.8.5",
-    "lockfile": "^1.0.4"
+    "lockfile": "^1.0.4",
+    "source-map-support": "^0.5.13"
   },
   "author": "Niklas Wigertz",
   "license": "Apache-2.0",
@@ -34,6 +35,10 @@
   "homepage": "https://github.com/rymdo/balena-electron-react#readme",
   "devDependencies": {
     "babel-eslint": "^10.0.2",
+    "electron": "^6.0.2",
+    "electron-builder": "^21.2.0",
+    "electron-rebuild": "^1.8.5",
+    "electron-webpack": "^2.7.4",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-import": "^2.18.2",
@@ -41,11 +46,12 @@
     "eslint-plugin-prettier": "^3.1.0",
     "husky": "^3.0.3",
     "lint-staged": "^9.2.1",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "webpack": "^4.39.2"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": ""
     }
   },
   "lint-staged": {
