@@ -37,12 +37,9 @@ function createMainWindow() {
     );
   }
 
-  window.setFullScreen(true);
-  /*
-  window.on('resize', () => {
-    window.getSize();
-  });
-*/
+  window.setSize(1920, 1080);
+  window.setPosition(0, 0);
+
   window.on('closed', () => {
     mainWindow = null;
   });
