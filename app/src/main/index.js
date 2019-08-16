@@ -29,6 +29,7 @@ function createMainWindow() {
   }
 
   window.setFullScreen(true);
+  window.setSize(1920, 1080);
   /*
   window.on('resize', () => {
     window.getSize();
