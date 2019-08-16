@@ -1,6 +1,16 @@
 module.exports = {
   parser: 'babel-eslint', // define babel as the parser
-  extends: ['eslint:recommended', 'prettier', 'plugin:node/recommended'],
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'prettier',
+    'plugin:node/recommended',
+  ],
+  plugins: ['react'],
+  rules: {
+    'node/no-unsupported-features/es-syntax': 'off',
+    'react/prop-types': ['error', { skipUndeclared: true }],
+  },
   parserOptions: {
     ecmaVersion: 2018, // understands let, const and other features
     sourceType: 'module', // understands the use of import and export
@@ -11,5 +21,10 @@ module.exports = {
   env: {
     browser: true, // add browser globals variables like document and window
     es6: true, // add globals like Set
+  },
+  settings: {
+    react: {
+      version: 'latest',
+    },
   },
 };

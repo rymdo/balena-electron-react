@@ -5,24 +5,24 @@ import { format as formatUrl } from 'url';
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
 // global reference to mainWindow (necessary to prevent window from being garbage collected)
-let mainWindow;
+let mainWindow: BrowserWindow | undefined;
 
 function createMainWindow() {
   const window = new BrowserWindow({
+    kiosk: true,
+    frame: false,
+    center: true,
+    height: 1280,
+    width: 720,
+    minWidth: 1280,
+    minHeight: 720,
     webPreferences: {
       nodeIntegration: true,
-      kiosk: true,
-      frame: false,
-      center: true,
-      height: 1920,
-      width: 1080,
-      minWidth: 1920,
-      minHeight: 1080,
     },
   });
 
   if (isDevelopment) {
-    window.webContents.openDevTools();
+    //window.webContents.openDevTools();
   }
 
   if (isDevelopment) {
@@ -37,13 +37,13 @@ function createMainWindow() {
     );
   }
 
-  window.setSize(1920, 1080);
+  //window.setSize(1920, 1080);
   window.setPosition(0, 0);
   window.removeMenu();
   window.setFullScreen(true);
 
   window.on('closed', () => {
-    mainWindow = null;
+    mainWindow = undefined;
   });
 
   window.webContents.on('devtools-opened', () => {

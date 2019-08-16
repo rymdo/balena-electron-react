@@ -8,10 +8,10 @@
     "start": "yarn compile && electron dist/main.js",
     "dist": "yarn compile && electron-builder",
     "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null",
-    "format": "prettier \"src/**/*.{js,jsx,css}\"",
-    "format:fix": "prettier --write \"src/**/*.{js,jsx,css}\"",
-    "lint": "eslint \"src/**/*.{js,jsx,css}\"",
-    "lint:fix": "eslint \"src/**/*.{js,jsx,css}\" --fix"
+    "format": "prettier \"./src/**/*.{js,jsx,ts,tsx,css,json}\"",
+    "format:fix": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,css,json}\"",
+    "lint": "eslint \"./src/**/*.{js,jsx,ts,tsx,json}\"",
+    "lint:fix": "eslint \"./src/**/*.{js,jsx,ts,tsx,json}\" --fix"
   },
   "repository": {
     "type": "git",
@@ -50,6 +50,7 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.3",
     "husky": "^3.0.3",
     "lint-staged": "^9.2.1",
     "prettier": "^1.18.2",
@@ -58,13 +59,13 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": ""
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
-    "**/*.{js,jsx,css}": [
-      "prettier --write \"**/*.{js,jsx,css,json}\"",
-      "eslint . --fix",
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix",
       "git add"
     ]
   },
