@@ -29,7 +29,11 @@ function createMainWindow() {
   }
 
   window.setFullScreen(true);
-
+  /*
+  window.on('resize', () => {
+    window.getSize();
+  });
+*/
   window.on('closed', () => {
     mainWindow = null;
   });
