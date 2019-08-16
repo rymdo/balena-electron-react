@@ -1,42 +1,61 @@
 {
-  "name": "resin-electronjs",
+  "name": "balena-electron-react",
   "version": "1.0.0",
-  "description": "electronJS-based resin application",
   "main": "main.js",
   "scripts": {
     "dev": "NODE_ENV=development electron .",
-    "lint": "eslint .",
     "start": "NODE_ENV=production startx ./node_modules/electron/dist/electron .",
-    "local": "NODE_ENV=production electron ."
+    "local": "NODE_ENV=production electron .",
+    "format": "prettier \"**/*.{js,jsx,css}\"",
+    "format:fix": "prettier --write \"**/*.{js,jsx,css}\"",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/resin-io/resin-electronjs.git"
+    "url": "git+https://github.com/rymdo/balena-electron-react"
   },
   "keywords": [
-    "resin",
+    "balena",
     "io",
     "electron",
     "js"
   ],
   "dependencies": {
-    "electron": "~1.6.16",
-    "electron-rebuild": "^1.7.2",
+    "electron": "^6.0.2",
+    "electron-rebuild": "^1.8.5",
     "lockfile": "^1.0.4"
   },
-  "author": "Carlo Maria Curinga",
+  "author": "Niklas Wigertz",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/resin-io/resin-electronjs/issues"
+    "url": "https://github.com/rymdo/balena-electron-react/issues"
   },
-  "homepage": "https://github.com/resin-io/resin-electronjs#readme",
-  "jshintConfig": {
-    "esversion": 6,
-    "strict": true
-  },
+  "homepage": "https://github.com/rymdo/balena-electron-react#readme",
   "devDependencies": {
-    "eslint": "^3.14.1",
-    "eslint-config-airbnb-base": "^11.0.1",
-    "eslint-plugin-import": "^2.2.0"
+    "babel-eslint": "^10.0.2",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^3.0.3",
+    "lint-staged": "^9.2.1",
+    "prettier": "^1.18.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,css}": [
+      "prettier --write \"**/*.{js,jsx,css,json}\"",
+      "eslint . --fix",
+      "git add"
+    ]
+  },
+  "engines": {
+    "node": ">=8.10.0"
   }
 }
