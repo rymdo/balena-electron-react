@@ -39,6 +39,8 @@
   "homepage": "https://github.com/rymdo/balena-electron-react#readme",
   "devDependencies": {
     "@babel/preset-react": "^7.0.0",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
     "babel-eslint": "^10.0.2",
     "electron": "^6.0.2",
     "electron-builder": "^21.2.0",

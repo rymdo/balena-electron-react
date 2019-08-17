@@ -1,7 +1,8 @@
 module.exports = {
-  parser: 'babel-eslint', // define babel as the parser
+  parser: '@typescript-eslint/parser', // define babel as the parser
   extends: [
     'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
     'prettier',
     'plugin:node/recommended',

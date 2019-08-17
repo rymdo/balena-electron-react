@@ -1,5 +1,8 @@
-import React from 'react';
-import { render } from 'react-dom';
-import { App } from './App';
+import { MainRenderer } from './src/MainRender';
 
-render(<App />, document.getElementById('app'));
+try {
+  const mainRenderer = new MainRenderer();
+  mainRenderer.start();
+} catch (error) {
+  console.error('Failed to start electron main renderer. Reason: ', error);
+}
