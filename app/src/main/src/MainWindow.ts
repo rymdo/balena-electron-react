@@ -26,10 +26,10 @@ export class MainWindow extends BrowserWindow {
       );
     }
 
-    //window.setSize(1920, 1080);
-    this.setPosition(0, 0);
-    this.removeMenu();
-    //this.setFullScreen(true);
+    // window.setSize(1920, 1080);
+    // this.setPosition(0, 0);
+    // this.removeMenu();
+    // this.setFullScreen(true);
 
     this.on('closed', this.onClose);
     this.webContents.on('devtools-opened', this.onDevToolsOpen);
